@@ -1,13 +1,16 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <register-component></register-component>
   </div>
 </template>
 
 <script>
+import registerComponent from './Register'
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    registerComponent
+  }
 }
 </script>
 
