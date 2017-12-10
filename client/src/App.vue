@@ -1,26 +1,27 @@
 <template>
-  <div id="app">
-    <register-component></register-component>
-  </div>
+    <div id="app">
+      <router-view></router-view>
+    </div>
 </template>
 
 <script>
-import registerComponent from './Register'
 export default {
-  name: 'app',
-  components: {
-    registerComponent
-  }
+  name: 'app'
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="sass-loader">
+  @import './styles/settings.scss';
+  body {
+    background-color: $blue;
+  }
+
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
 </style>
