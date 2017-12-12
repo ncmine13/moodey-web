@@ -1,46 +1,78 @@
 <template>
   <div class="registration__wrapper">
     <h1>Register</h1>
-    <input type="email" name="email" placeholder="email" v-model="email"/>
-    <input type="password" name="password" placeholder="password" v-model="password"/>
-    <button v-on:click="register()">Register</button>
+    <input class="input-styles" type="email" name="email" placeholder="email" v-model="email"/>
+    <input class="input-styles" type="password" name="password" placeholder="password" v-model="password"/>
+    <button class="input-styles" v-on:click="register()">Register</button>
     <div class="error" v-html="error"></div>
   </div>
 </template>
 
 <script>
-import AuthenticationService from '../services/AuthenticationService'
+import AuthenticationService from "../services/AuthenticationService";
 export default {
-  data () {
+  data() {
     return {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
       error: null
-    }
+    };
   },
   methods: {
-    async register () {
+    async register() {
       try {
         const response = await AuthenticationService.register({
           email: this.email,
           password: this.password
-        })
-        console.log(response.data)
+        });
+        console.log(response.data);
       } catch (err) {
-        this.error = err.response.data.error
+        this.error = err.response.data.error;
       }
     }
   }
-}
+};
 </script>
 
-<style lang="sass-loader">
-  @import '../styles/settings.scss';
-  .registration {
-    &__wrapper {
-      background-color: white;
-      color: $purple;
+<style lang="sass-loader" scoped>
+@import "../styles/settings.scss";
+.registration {
+  &__wrapper {
+    background-color: white;
+    color: $purple;
+    padding: 20px;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .input-styles {
+      width: 85%;
+      font-size: 14px;
+      border-radius: 2px;
+      font-weight: 500;
+    }
+    h1 {
+      margin-bottom: 0;
+    }
+    input {
+      border: none;
+      border-bottom: 1px solid $purple;
+      margin: 20px 5px;
+      text-align: center;
+      color: $gray;
+    }
+    button {
+      border: none;
+      padding: 10px 5px;
+      background-color: $red;
+      margin: 10px 0;
+      color: white;
+      box-shadow: 1px 1px 5px $shadow;
+    }
+    .error {
+      color: $red;
+      font-size: 12px;
     }
   }
-
+}
 </style>
